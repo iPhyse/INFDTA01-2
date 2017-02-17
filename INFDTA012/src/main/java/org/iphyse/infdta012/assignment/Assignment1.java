@@ -75,6 +75,24 @@ public class Assignment1 {
         System.out.println(MessageFormat.format("Cluster centroid: #{0}", currCluster));
         System.out.println(MessageFormat.format("Total buyers: {0}", cluster.getPoints().size()));
         
+        Set<ClusterPoint> cps = cluster.getPoints();
+        
+        int clientCount = 0;
+        for (ClusterPoint cp : cps) {
+            clientCount++;
+            String ClientBought = MessageFormat.format("Client #{0} buys offer(s) ", clientCount);
+            
+            double[] wines = cp.getProperties();
+            int count = 0;
+            for(int i = 0; i < wines.length; i++){
+                if(wines[i] == 1){
+                    count ++;
+                    ClientBought = ClientBought + (i + 1) + ",";
+                }
+            }
+            if(count > 0)
+                System.out.println(MessageFormat.format("{0}.", ClientBought.substring(0, ClientBought.length()-1)));
+        }
         for(int i = 0; i < wineCount.length; i++) {
             if(wineCount[i] > 0) {
                 System.out.println(MessageFormat.format("OFFER {0} --> bought {1} times", i + 1, wineCount[i]));
