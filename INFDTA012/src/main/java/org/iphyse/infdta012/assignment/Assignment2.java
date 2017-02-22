@@ -58,7 +58,8 @@ public class Assignment2 {
             
             System.out.println("Average fitness: " + avgFitness);
             System.out.println("Best fitness: " + algorithm.getFitness(population.get(0)));
-            System.out.println("Best individual: " + population.get(0).getValue());
+            //System.out.println("Best individual (bits: "+BITS+"): " + String.format("%"+BITS+"s", Integer.toBinaryString(population.get(0).getValue())).replace(" ", "0"));
+            System.out.println("Best individual (decimal): " + population.get(0).getValue());
 	}
 
 	private static List<Individual<Byte>> initPopulation(int size) {
