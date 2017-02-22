@@ -11,7 +11,11 @@ This project includes for assignment 1:
 -	SSE calculation (error sum of squares)
 
 ~ for assignment 2:
--   Needs to be completed.
+-   Crossover
+-	Mutation
+-	Elitism
+-	Everage & best fitness
+-	Best individual
 
 ~ and for assignment 3:
 -   Needs to be completed.
