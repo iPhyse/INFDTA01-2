@@ -1,11 +1,11 @@
 package org.iphyse.infdta012;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import org.iphyse.infdta012.assignment.Assignment1;
 import org.iphyse.infdta012.assignment.Assignment2;
+import org.iphyse.infdta012.assignment.Assignment3;
 import org.iphyse.infdta012.general.TryToParseAny;
 
 /**
@@ -14,6 +14,7 @@ import org.iphyse.infdta012.general.TryToParseAny;
  */
 public class Main {
    private static final String csvWine = "./src/resources/WineData.csv";
+   private static final String csvForecasting = "./src/resources/swordforecasting.csv";
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
     public static void main(String args[]) throws IOException{
@@ -22,6 +23,7 @@ public class Main {
         System.out.println("INFDAT01-2 - Data mining");
         System.out.println("[1] Assignment - Clustering");
         System.out.println("[2] Assignment - Genetic Algorithm");
+        System.out.println("[3] Assignment - Forecasting");
         System.out.println();
         
         System.out.print("Enter Assignment number: ");
@@ -60,7 +62,14 @@ public class Main {
                 retailMart.executeAssignment();
                 System.out.println("---------------------------[ END ]---------------------------\r\n");
                 break;
+            case 3:
+                Assignment3 forecast = new Assignment3(csvForecasting);
+                forecast.executeAssignment();
+                br.readLine();
+                break;
         }
+        
+        //simple return to the top of this application..
         main(new String[]{});
         
     }
