@@ -18,4 +18,5 @@ This project includes for assignment 1:
 -	Best individual
 
 ~ and for assignment 3:
--   Needs to be completed.
+-   	SES (Simple exponential smoothing) forecasting
+-	DES (Double exponential smoothing) forecasting
