@@ -11,7 +11,6 @@ public class DoubleExponentialSmoothing {
     private static final int BITS = SimpleExponentialSmoothing.BITS * 2;
     private static final int ITERATIONS = 1000;
     private static final int MASK = (int) (Math.pow(2, SimpleExponentialSmoothing.BITS) - 1);
-    ;
     private final List<Double> values;
     private final double[] smoothed;
     private final double[] trend;
