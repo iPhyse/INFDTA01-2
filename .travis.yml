@@ -1,4 +1,4 @@
 # this is a java project using maven
 language: java
-# install
-install: mvn install
+jdk: - oraclejdk8
+install: - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
