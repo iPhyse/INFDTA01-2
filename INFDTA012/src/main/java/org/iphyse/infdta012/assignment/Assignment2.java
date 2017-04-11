@@ -27,7 +27,7 @@ public class Assignment2 {
             Assignment2.iterations = iterations;
         }
         
-	public static void executeAssignment() {
+public static void executeAssignment() {
             double crossoverRate = crossover;
             double mutationRate = mutation;
             int populationSize = population;
@@ -44,10 +44,18 @@ public class Assignment2 {
 
             GeneticAlgorithm<Byte> algorithm = new GeneticAlgorithm<>(BITS, crossoverRate, mutationRate, elitism, listPopulation, fitnessAlgorithm);
             printResult(algorithm.run(numIterations), algorithm);
-	}
+}
 
-	private static void printResult(List<Individual<Byte>> population, GeneticAlgorithm<Byte> algorithm) {
-            //System.out.println(population);
+private static void printResult(List<Individual<Byte>> population, GeneticAlgorithm<Byte> algorithm) {
+            System.out.println(population);
+            System.out.print("[");
+            for (Individual<Byte> individual : population) {
+                System.out.print("<" + String.format("%" + BITS + "s", Integer.toBinaryString(individual.getValue())).replace(" ", "0") + ">, ");
+
+            }
+            System.out.print("]\r\n");
+            
+            
             double avgFitness = 0;
             //for(Individual<Byte> individual : population) {
             //    avgFitness += algorithm.getFitness(individual);
@@ -58,15 +66,17 @@ public class Assignment2 {
             
             System.out.println("Average fitness: " + avgFitness);
             System.out.println("Best fitness: " + algorithm.getFitness(population.get(0)));
-            //System.out.println("Best individual (bits: "+BITS+"): " + String.format("%"+BITS+"s", Integer.toBinaryString(population.get(0).getValue())).replace(" ", "0"));
+            System.out.println("Bit(s) amount/length setting: " + BITS);
+            System.out.println("Best individual (binary): " + String.format("%" + BITS + "s", 
+                    Integer.toBinaryString(population.get(0).getValue())).replace(" ", "0"));
             System.out.println("Best individual (decimal): " + population.get(0).getValue());
-	}
+}
 
-	private static List<Individual<Byte>> initPopulation(int size) {
+private static List<Individual<Byte>> initPopulation(int size) {
             List<Individual<Byte>> populations = new ArrayList<>(size);
             for(int i = 0; i < size; i++) {
                 populations.add(new ByteIndividual(BITS));
             }
             return populations;
-	}
+}
 }
