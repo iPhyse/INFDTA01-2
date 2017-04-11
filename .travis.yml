@@ -1,2 +1,4 @@
+# this is a java project using maven
 language: java
-exclude: -ant
+# install
+install: mvn install
