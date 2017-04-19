@@ -43,15 +43,30 @@ public class PointParser {
     }
 
     private void parseLines(List<String[]> lines) {
-        for (int i = 0; i < lines.size(); i++) {
-            double[] values = new double[lines.get(0).length];
-            for (int j = 0; j < values.length; j++) {
+
+        for (int j = 0; j < lines.get(0).length; j++) {
+            double[] newPoint = new double[lines.size()]; 
+            for(int i = 0; i < lines.size(); i++) { 
                 if (lines.get(i)[j].isEmpty()) {
                     continue;
                 }
-                values[j] = Double.parseDouble(lines.get(i)[j]);
+                newPoint[i] = Double.parseDouble(lines.get(i)[j]);
+                
             }
-            points.add(new ClusterPoint(values));
+            points.add(new ClusterPoint(newPoint));
         }
     }
+    
+//    private void parseLines(List<String[]> lines) {
+//        for (int i = 0; i < lines.size(); i++) {
+//            double[] values = new double[lines.get(0).length];
+//            for (int j = 0; j < values.length; j++) {
+//                if (lines.get(i)[j].isEmpty()) {
+//                    continue;
+//                }
+//                values[j] = Double.parseDouble(lines.get(i)[j]);
+//            }
+//            points.add(new ClusterPoint(values));
+//        }
+//    }
 }
