@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 public class Assignment3 {
 
     private static final int MONTHS = 12;
+    
     private static final int PREDICTION = 49;
     private static String csvFile;
 
@@ -48,12 +49,14 @@ public class Assignment3 {
     private static List<Double> parseFile(String file) throws FileNotFoundException {
         List<Double> values = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(file))) {
+            
             while (scanner.hasNextDouble()) {
                 values.add(scanner.nextDouble());
             }
         }
         return values;
     }
+    
 
     private static Graphs getGraphs(List<Double> values) {
         SimpleExponentialSmoothing ses = new SimpleExponentialSmoothing(values, MONTHS);

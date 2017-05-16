@@ -48,14 +48,22 @@ public class Graphs extends JPanel {
     protected void paintComponent(Graphics g) {
         g.drawString(sesStats, X_OFFSET, Y_OFFSET);
         g.drawString(desStats, X_OFFSET, Y_OFFSET * 2);
+        
+        g.drawString("BLACK: ORIGINAL", getWidth() - 150, getHeight() - 50);
+        g.setColor(Color.BLUE);
+        g.drawString("BLUE: SES", getWidth() - 150, getHeight() - 35);
+        g.setColor(Color.MAGENTA);
+        g.drawString("MAGENTA: DES", getWidth() - 150, getHeight() - 20);
+        g.setColor(Color.BLACK);
+        
         double width = getWidth() - X_OFFSET;
         double height = getHeight() - Y_OFFSET;
         drawAxis(g, width, height);
         double xMult = width / xMax;
         double yMult = height / (yMax - yMin);
-        drawLine(g, xMult, yMult, Color.GREEN, originalValues.size(), originalValues::get);
-        drawLine(g, xMult, yMult, Color.BLACK, sesValues.length, i -> sesValues[i]);
-        drawLine(g, xMult, yMult, Color.BLUE, desValues.length, i -> desValues[i]);
+        drawLine(g, xMult, yMult, Color.BLACK, originalValues.size(), originalValues::get);
+        drawLine(g, xMult, yMult, Color.BLUE, sesValues.length, i -> sesValues[i]);  //SES
+        drawLine(g, xMult, yMult, Color.MAGENTA, desValues.length, i -> desValues[i]);//DES
     }
 
     private void drawAxis(Graphics g, double width, double height) {

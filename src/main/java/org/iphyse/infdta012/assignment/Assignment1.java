@@ -42,10 +42,9 @@ public class Assignment1 {
         
         try {
             Writer writer = new BufferedWriter(
-                    new OutputStreamWriter(new FileOutputStream(
-                            new File("./src/resources/SSEOutput.txt")
-            
-                    ), "utf-8")
+                new OutputStreamWriter(new FileOutputStream(
+                        new File("./src/resources/SSEOutput.txt")
+                ), "utf-8")
             );
             writer.write("SSE: " + creator.getSSE(clusters));
             writer.close();
@@ -55,7 +54,9 @@ public class Assignment1 {
         for(Cluster c : clusters) {
             postProcess(c);
         }
+        
         System.out.println("\u001B[32mResult SSE: " + creator.getSSE(clusters));
+        //System.out.println("points devided by cluster: " + (points.size() / clusters.length));
     }
 
     private static void postProcess(Cluster cluster) {

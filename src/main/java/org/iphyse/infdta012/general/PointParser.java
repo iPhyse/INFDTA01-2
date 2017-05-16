@@ -27,9 +27,11 @@ public class PointParser {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 if (line != null && !line.isEmpty()) {
-                    if (line.contains(",")) {
+                    //check if comma seperated
+                    if (line.contains(",")) { 
                         lines.add(line.split(","));
-                    } else {
+                    } else { 
+                        //a2.txt, space separated..
                         if (Character.isWhitespace(line.charAt(0))) {
                             line = line.replaceFirst("   ", "");
                         }
@@ -44,29 +46,32 @@ public class PointParser {
 
     private void parseLines(List<String[]> lines) {
 
-        for (int j = 0; j < lines.get(0).length; j++) {
-            double[] newPoint = new double[lines.size()]; 
-            for(int i = 0; i < lines.size(); i++) { 
-                if (lines.get(i)[j].isEmpty()) {
-                    continue;
+        Boolean byRow = false;
+        if (byRow) {
+            for (int j = 0; j < lines.get(0).length; j++) {
+                double[] newPoint = new double[lines.size()];
+                for (int i = 0; i < lines.size(); i++) {
+                    if (lines.get(i)[j].isEmpty()) {
+                        continue;
+                    }
+                    newPoint[i] = Double.parseDouble(lines.get(i)[j]);
+
                 }
-                newPoint[i] = Double.parseDouble(lines.get(i)[j]);
-                
+                points.add(new ClusterPoint(newPoint));
             }
-            points.add(new ClusterPoint(newPoint));
+
+        } else {
+            for (int i = 0; i < lines.size(); i++) {
+                double[] values = new double[lines.get(0).length];
+                for (int j = 0; j < values.length; j++) {
+                    if (lines.get(i)[j].isEmpty()) {
+                        continue;
+                    }
+                    values[j] = Double.parseDouble(lines.get(i)[j]);
+                }
+                points.add(new ClusterPoint(values));
+            }
         }
+
     }
-    
-//    private void parseLines(List<String[]> lines) {
-//        for (int i = 0; i < lines.size(); i++) {
-//            double[] values = new double[lines.get(0).length];
-//            for (int j = 0; j < values.length; j++) {
-//                if (lines.get(i)[j].isEmpty()) {
-//                    continue;
-//                }
-//                values[j] = Double.parseDouble(lines.get(i)[j]);
-//            }
-//            points.add(new ClusterPoint(values));
-//        }
-//    }
 }

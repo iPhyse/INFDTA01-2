@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import org.iphyse.infdta012.assignment.Assignment1;
 import org.iphyse.infdta012.assignment.Assignment2;
 import org.iphyse.infdta012.assignment.Assignment3;
+import org.iphyse.infdta012.assignment.Assignment3_oralCheck;
 import org.iphyse.infdta012.general.TryToParseAny;
 
 /**
@@ -13,8 +14,11 @@ import org.iphyse.infdta012.general.TryToParseAny;
  * @author RICKRICHTER
  */
 public class Main {
-   private static final String csvWine = "./src/resources/WineData.csv";
-   private static final String csvForecasting = "./src/resources/swordforecasting.csv";
+   //private static final String csvWine = "./src/resources/WineData.csv";
+   private static final String csvWine = "./src/resources/a2.txt";
+   //private static final String csvForecasting = "./src/resources/swordforecasting.csv";
+   private static final String csvForecasting = "./src/resources/forecastingWalmart.csv";
+   
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
     public static void main(String args[]) throws IOException{
@@ -63,7 +67,7 @@ public class Main {
                 System.out.println("---------------------------[ END ]---------------------------\r\n");
                 break;
             case 3:
-                Assignment3 forecast = new Assignment3(csvForecasting);
+                Assignment3_oralCheck forecast = new Assignment3_oralCheck(csvForecasting);
                 forecast.executeAssignment();
                 br.readLine();
                 break;
