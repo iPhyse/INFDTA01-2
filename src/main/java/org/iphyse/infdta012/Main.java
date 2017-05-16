@@ -14,10 +14,10 @@ import org.iphyse.infdta012.general.TryToParseAny;
  * @author RICKRICHTER
  */
 public class Main {
-   //private static final String csvWine = "./src/resources/WineData.csv";
-   private static final String csvWine = "./src/resources/a2.txt";
-   //private static final String csvForecasting = "./src/resources/swordforecasting.csv";
-   private static final String csvForecasting = "./src/resources/forecastingWalmart.csv";
+   private static final String csvWine = "./src/resources/WineData.csv";
+   private static final String csvA2 = "./src/resources/a2.txt";
+   private static final String csvForecasting = "./src/resources/swordforecasting.csv";
+   private static final String csvForecastingWalmart = "./src/resources/forecastingWalmart.csv";
    
     private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
@@ -46,7 +46,7 @@ public class Main {
                 int iterations = TryToParseAny.ttpaInt(br.readLine(), 10);
                 //Load-in WineOrder and execute
                 System.out.println("\r\n--------------------[Result assignment 1]--------------------");
-                Assignment1 wineOrder = new Assignment1(clusters, iterations, csvWine);
+                Assignment1 wineOrder = new Assignment1(clusters, iterations, csvWine, true); //True means read by = column, false means read by = row.
                 wineOrder.executeAssignment();
                 System.out.println("---------------------------[ END ]---------------------------\r\n");
                 break;
@@ -67,7 +67,10 @@ public class Main {
                 System.out.println("---------------------------[ END ]---------------------------\r\n");
                 break;
             case 3:
-                Assignment3_oralCheck forecast = new Assignment3_oralCheck(csvForecasting);
+                Assignment3 forcastOriginal = new Assignment3(csvForecasting);
+                forcastOriginal.executeAssignment();
+                
+                Assignment3_oralCheck forecast = new Assignment3_oralCheck(csvForecastingWalmart);
                 forecast.executeAssignment();
                 br.readLine();
                 break;

@@ -23,11 +23,13 @@ import org.iphyse.infdta012.similarity.EucledianDistance;
 public class Assignment1 {
     private static int nClusters, nIterations, currCluster;
     private static String csvFile;
+    private static boolean readByColumn;
 
-    public Assignment1(int clusters, int iterations, String csvFile){
+    public Assignment1(int clusters, int iterations, String csvFile, boolean readByColumn){
         Assignment1.nClusters = clusters;
         Assignment1.nIterations = iterations;
         Assignment1.csvFile = csvFile;
+        Assignment1.readByColumn = readByColumn;
     }
 
     public static void main(String[] args) { }
@@ -36,7 +38,7 @@ public class Assignment1 {
         int amountClusters = nClusters;
         int amountIterations = nIterations;
         Assignment1.currCluster = 0;
-        List<ClusterPoint> points = new PointParser(csvFile).parsePoints();
+        List<ClusterPoint> points = new PointParser(csvFile).parsePoints(readByColumn);
         ClusterCreate creator = new ClusterCreate(points, new KMean(new EucledianDistance()));
         Cluster[] clusters = creator.createClusters(amountClusters, amountIterations);
         

@@ -20,7 +20,7 @@ public class PointParser {
         this.file = new File(file);
     }
 
-    public List<ClusterPoint> parsePoints() throws FileNotFoundException {
+    public List<ClusterPoint> parsePoints(boolean readByColumn) throws FileNotFoundException {
         points = new ArrayList<>();
         List<String[]> lines = new ArrayList<>();
         try (Scanner sc = new Scanner(file)) {
@@ -40,14 +40,14 @@ public class PointParser {
                 }
             }
         }
-        parseLines(lines);
+        parseLines(lines, readByColumn);
         return points;
     }
 
-    private void parseLines(List<String[]> lines) {
+    private void parseLines(List<String[]> lines, boolean readByColumn) {
 
-        Boolean byRow = false;
-        if (byRow) {
+        if (readByColumn) {
+            //By column
             for (int j = 0; j < lines.get(0).length; j++) {
                 double[] newPoint = new double[lines.size()];
                 for (int i = 0; i < lines.size(); i++) {
@@ -61,6 +61,7 @@ public class PointParser {
             }
 
         } else {
+            //By row
             for (int i = 0; i < lines.size(); i++) {
                 double[] values = new double[lines.get(0).length];
                 for (int j = 0; j < values.length; j++) {
